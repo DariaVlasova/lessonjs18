@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css"> 
+</head>
+<body>
+    <div class="container">
+    <h1>
+Задача 6. Користувач задає кількість оцінок і натискає на кнопку «get table». 
+В результаті формується таблиця з input, куди користувач вводить оцінки. 
+Після цього натискає на кнопку “get sum” і знаходить середнє значення.
+    </h1>
+ <a href="./index.html">Повернутись до задач</a>
+ <label>Введить кількість оцінок
+    <input type="number" id="nums"/>
+ </label>
+ <button onclick="getTable()">Створити таблицю</button>
+ <div id="wrapper" class="wrapper"></div>
+ <button onclick="averageScore()">Знайти середній бал</button>
+ <div id="result"></div>
+<script>
+   function getTable(){
+    let count=parseInt(document.getElementById("nums").value)
+    let wrapper=document.getElementById("wrapper")
+    for(let i=0;i<count;i++){
+        let input=document.createElement('input')
+        input.type="number"
+        input.className='num'
+        wrapper.append(input)
+    }
+   }
+   function averageScore(){
+    let numbers=document.querySelectorAll('.num')
+    let sum=0
+    let counter=0
+    numbers.forEach((num)=>{
+        sum+=parseInt(num.value)
+        counter++
+    })
+    const result=sum/counter
+    console.log(result);
+    document.getElementById('result').innerText=`Середній бал:${result}`
+   }
+</script>
+     
+   
+</body>
+</html>
